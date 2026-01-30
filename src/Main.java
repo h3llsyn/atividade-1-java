@@ -1,15 +1,49 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> listaNomes = new ArrayList<>();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        while (true){
+            System.out.println("\nDigite uma opção:\n" +
+                    "1 - Cadastrar nome\n" +
+                    "2 - Listar nomes cadastrados\n" +
+                    "3 - Atualizar um nome existente\n" +
+                    "4 - Remover um nome\n" +
+                    "5 - Sair do sistema");
+
+            String opcao = sc.nextLine();
+
+            if (opcao.equals("1")){
+                System.out.println("Digite o nome desejado para ser cadastrado");
+                String nome = sc.nextLine();
+                listaNomes.add(nome);
+                System.out.printf("O nome %s foi cadastrado com sucesso", nome);
+            }
+            else if (opcao.equals("2")){
+                System.out.println("Nomes cadastrados:");
+                for(String nomes : listaNomes){
+                    System.out.println(nomes);
+                }
+            }
+            else if (opcao.equals("3")){
+                System.out.println("blublw");
+            }
+            else if (opcao.equals("4")){
+                System.out.println("blublw");
+            }
+            else if (opcao.equals("5")){
+                System.out.println("Obrigada por usar nosso programa :D");
+                break;
+            }
+            else{
+                System.out.println("Erro, por favor digite uma opção válida");
+            }
         }
     }
 }
