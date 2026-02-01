@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -23,24 +22,62 @@ public class Main {
                 System.out.println("Digite o nome desejado para ser cadastrado");
                 String nome = sc.nextLine();
                 listaNomes.add(nome);
-                System.out.printf("O nome %s foi cadastrado com sucesso", nome);
+                System.out.printf("O nome '%s' foi cadastrado com sucesso\n", nome);
             }
+
             else if (opcao.equals("2")){
-                System.out.println("Nomes cadastrados:");
+                if (listaNomes.isEmpty()){
+                    System.out.println("Nenhum nome cadastrado");
+                }
+                else {
+                    System.out.println("Nomes cadastrados:");
+                    for(String nomes : listaNomes){
+                        System.out.println(nomes);
+                    }
+                }
+            }
+
+            else if (opcao.equals("3")){
+                System.out.println("Qual nome você gostaria de editar?");
                 for(String nomes : listaNomes){
                     System.out.println(nomes);
                 }
+                String opcaoNome = sc.nextLine();
+                int nomeAntigo = listaNomes.indexOf(opcaoNome);
+
+                while (nomeAntigo == -1){
+                    System.out.println("Erro, por favor digite um nome válido");
+                    opcaoNome = sc.nextLine();
+                    nomeAntigo = listaNomes.indexOf(opcaoNome);
+                }
+                System.out.println("Digite o novo nome desejado:");
+                String nomeNovo = sc.nextLine();
+                listaNomes.set(nomeAntigo, nomeNovo);
+                System.out.println("Nome atualizado com sucesso!");
             }
-            else if (opcao.equals("3")){
-                System.out.println("blublw");
-            }
+
             else if (opcao.equals("4")){
-                System.out.println("blublw");
+                System.out.println("Qual nome você gostaria de remover?");
+                for(String nomes : listaNomes){
+                    System.out.println(nomes);
+                }
+                String opcaoNome = sc.nextLine();
+                int nomeEscolhido = listaNomes.indexOf(opcaoNome);
+
+                while(nomeEscolhido == -1){
+                    System.out.println("Erro, por favor digite um nome válido");
+                    opcaoNome = sc.nextLine();
+                    nomeEscolhido = listaNomes.indexOf(opcaoNome);
+                }
+                listaNomes.remove(nomeEscolhido);
+                System.out.printf("O nome '%s' foi removido com sucesso\n", opcaoNome);
             }
+
             else if (opcao.equals("5")){
                 System.out.println("Obrigada por usar nosso programa :D");
                 break;
             }
+
             else{
                 System.out.println("Erro, por favor digite uma opção válida");
             }
